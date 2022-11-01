@@ -8,4 +8,5 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
   database: 'quiz',
   entities: [__dirname + '/../**/*.entity{.ts,.js}'],
   synchronize: true,
+  logging: true,
 };

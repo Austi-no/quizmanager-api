@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { createQuizDto } from '../dto/create-quiz.dto';
+import { Question } from '../entity/question.entity';
 import { Quiz } from '../entity/quiz.entity';
 import { QuizRepository } from '../repository/quiz.repository';
 
@@ -21,5 +22,13 @@ export class QuizService {
 
   async createQuiz(quiz: createQuizDto): Promise<Quiz> {
     return await this.quizRepository.save(quiz);
+  }
+
+  async getAllQuiz() {
+    return await this.quizRepository
+      .createQueryBuilder('q')
+      .leftJoinAndSelect('q.questions', 'qt')
+      // .leftJoinAndSelect('qt.options', 'o')
+      .getMany();
   }
 }

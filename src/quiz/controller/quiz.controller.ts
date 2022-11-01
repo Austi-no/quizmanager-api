@@ -19,8 +19,8 @@ export class QuizController {
 
   @Get('/')
   @HttpCode(200)
-  getAllQuizzes() {
-    return this.quizService.getQuizes();
+  async getAllQuizzes() {
+    return await this.quizService.getAllQuiz();
   }
 
   @Post('/add')

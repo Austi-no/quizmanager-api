@@ -6,6 +6,8 @@ import {
   ValidationPipe,
   Body,
   HttpCode,
+  ParseIntPipe,
+  Param,
 } from '@nestjs/common';
 import { createQuestionDto } from '../dto/create-question.dto';
 import { Question } from '../entity/question.entity';
@@ -22,6 +24,11 @@ export class QuestionController {
   @Get('/all')
   getAllQuestions() {
     return this.questionService.getAllQuestions();
+  }
+
+  @Get('/:id')
+  getQuestionById(@Param('id', ParseIntPipe) id: number) {
+    return this.questionService.findQuestionById(id);
   }
 
   @Post('/create')
