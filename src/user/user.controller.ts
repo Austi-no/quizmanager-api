@@ -3,6 +3,7 @@ import {
   Controller,
   Get,
   HttpCode,
+  Param,
   Post,
   UsePipes,
   ValidationPipe,
@@ -25,5 +26,10 @@ export class UserController {
     @Body() userDto: UserRegistrationRequestDto,
   ): Promise<User> {
     return await this.userService.registerUser(userDto);
+  }
+
+  @Get('/get/:email')
+  async getUserByEmail(@Param('email') email: string): Promise<User> {
+    return await this.userService.getUserByEmail(email);
   }
 }
