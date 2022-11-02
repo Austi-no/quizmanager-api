@@ -7,10 +7,12 @@ import {
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { createOptionDto } from '../dto/option.dto';
 import { OptionService } from '../service/option.service';
 import { QuestionService } from '../service/question.service';
 
+@ApiTags('Quiz controller')
 @Controller('question/option')
 export class OptionController {
   constructor(

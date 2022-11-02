@@ -14,7 +14,7 @@ import { UserRegistrationRequestDto } from './dto/user-register-req.dto';
 import { User } from './user.entity';
 import { UserService } from './user.service';
 
-ApiTags('User Controller');
+@ApiTags('User controller')
 @Controller('user')
 export class UserController {
   constructor(private userService: UserService) {}
