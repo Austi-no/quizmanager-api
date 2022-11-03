@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { UserRegistrationRequestDto } from './dto/user-register-req.dto';
 import { User } from './user.entity';
 import * as bcrypt from 'bcryptjs';
@@ -16,5 +20,13 @@ export class UserService {
     const user = await User.findOne({ email });
 
     return user;
+  }
+
+  async getUserById(id: number): Promise<any> {
+    const user = await User.findOne({ id });
+    if (user) {
+      return user;
+    }
+    throw new BadRequestException('User not found');
   }
 }

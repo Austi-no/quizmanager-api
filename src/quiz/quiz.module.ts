@@ -1,5 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { UserModule } from 'src/user/user.module';
+import { UserService } from 'src/user/user.service';
 import { OptionController } from './controller/option.controller';
 import { QuestionController } from './controller/question.controller';
 import { QuizController } from './controller/quiz.controller';
@@ -18,6 +20,7 @@ import { QuizService } from './service/quiz.service';
       QuestionRepository,
       OptionRepository,
     ]),
+    UserModule,
   ],
   providers: [QuizService, QuestionService, OptionService],
 })
